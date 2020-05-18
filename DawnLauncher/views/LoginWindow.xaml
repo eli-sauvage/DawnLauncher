@@ -26,7 +26,7 @@
         <!--warning msg-->
         <TextBlock HorizontalAlignment="Left"  Margin="10,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" Foreground="Red" Name="WarningMessage" Visibility="Hidden"><Run Text="⚠"/><Run Text=" "/><Run Text="Password/login incorrect"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="10,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" Height="22">
-            <Hyperlink NavigateUri="https://twitch.tv">
+            <Hyperlink NavigateUri="https://twitch.tv" RequestNavigate="Hyperlink_RequestNavigate">
                 Mdp oublié
                 <Hyperlink.Style>
                     <Style TargetType="Hyperlink">
@@ -40,7 +40,7 @@
             </Hyperlink>
         </TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="10,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90">
-            <Hyperlink NavigateUri="https://youtube.com">
+            <Hyperlink NavigateUri="https://youtube.com" RequestNavigate="Hyperlink_RequestNavigate_1">
                 Créer un compte
                 <Hyperlink.Style>
                     <Style TargetType="Hyperlink">

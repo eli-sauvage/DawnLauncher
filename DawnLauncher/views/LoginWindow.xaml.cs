@@ -179,14 +179,14 @@ namespace DawnLauncher
 
         }
 
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {//creer comtpe
-            Process.Start("https://youtube.com");
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            Process.Start("https://twitch.tv");
         }
 
-        private void TextBlock_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
-        {//mdp oublié
-            Process.Start("https://twitch.tv");
+        private void Hyperlink_RequestNavigate_1(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {//creer compte
+            Process.Start("https://youtube.com");
         }
     }
     class JsonConstruct
