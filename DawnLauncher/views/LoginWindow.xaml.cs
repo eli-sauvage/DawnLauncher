@@ -142,7 +142,7 @@ namespace DawnLauncher
                         saveLoginLabel.Visibility = Visibility.Hidden;
                         Task.Run(async delegate
                         {
-                            await Task.Delay(1500);
+                            await Task.Delay(500);
                             Dispatcher.Invoke(DispatcherPriority.Normal, new Action<TextBlock>(hideTxtBlok), WarningMessage);
                             Dispatcher.Invoke(DispatcherPriority.Normal, new Action<Label>(makeLabelVisible), saveLoginLabel);
                             Dispatcher.Invoke(DispatcherPriority.Normal, new Action<CheckBox>(makeCheckboxVisible), saveLoginCheckbox);
