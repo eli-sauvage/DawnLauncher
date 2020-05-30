@@ -32,6 +32,8 @@
         <Button Content="Reset" HorizontalAlignment="Left" Margin="10,41,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Label Content="Reset Settings stored on this Computer" HorizontalAlignment="Left" Margin="90,38,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="220"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,1,0,0" TextWrapping="Wrap" Text="Dawn Launcher" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="39" Width="380" FontSize="32"/>
+        <Button Content="set path" HorizontalAlignment="Left" Margin="10,72.4,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="setPathEvent"/>
+        <Label Content="Manually set game Path" HorizontalAlignment="Left" Margin="98,69.4,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="160"/>
 
     </Grid>
 </Window>

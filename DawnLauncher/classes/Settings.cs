@@ -25,8 +25,8 @@ namespace DawnLauncher
                 updateSettings();
             }
         }
-        private string m_savedLogin;
-        public string savedLogin
+        private bool m_savedLogin;
+        public bool savedLogin
         {
             get => m_savedLogin;
             set
@@ -42,6 +42,26 @@ namespace DawnLauncher
             set
             {
                 m_gameVersion = value;
+                updateSettings();
+            }
+        }
+        private string m_key;
+        public string key
+        {
+            get => m_key;
+            set
+            {
+                m_key = value;
+                updateSettings();
+            }
+        }
+        private string m_login;
+        public string login
+        {
+            get => m_login;
+            set
+            {
+                m_login = value;
                 updateSettings();
             }
         }
@@ -69,7 +89,9 @@ namespace DawnLauncher
             {
                 gameDir = gameDir,
                 savedLogin = savedLogin,
-                gameVersion = gameVersion
+                gameVersion = gameVersion,
+                key = key,
+                login = login,
             };
             string text = JsonConvert.SerializeObject(obj);
             File.WriteAllText(jsonPath, text);
@@ -86,15 +108,19 @@ namespace DawnLauncher
                 result = JsonConvert.DeserializeObject("{}");
             }
             gameDir = result.gameDir;
-            savedLogin = result.savedLogin;
+            savedLogin = (bool)result.savedLogin;
             gameVersion = result.gameVersion;
+            key = result.key;
+            login = result.login;
         }
 
         private class SettingObject
         {
             public string gameDir;
-            public string savedLogin;
+            public bool savedLogin;
             public string gameVersion;
+            public string key;
+            public string login;
         }
     }
 

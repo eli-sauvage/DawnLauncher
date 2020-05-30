@@ -15,6 +15,6 @@ namespace DawnLauncher
     public partial class App : Application
     {
         public Settings settings = new Settings();
-        public string gameName = "osef.exe";
+        public string gameName = "Dawn.exe";
     }
 }

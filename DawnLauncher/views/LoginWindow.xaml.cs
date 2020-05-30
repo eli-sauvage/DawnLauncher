@@ -30,7 +30,8 @@ namespace DawnLauncher
         {
             InitializeComponent();
             WarningMessage.Visibility = Visibility.Hidden;
-            pseudoBox.Text = ((App)App.Current).settings.savedLogin;
+            if(((App)App.Current).settings.savedLogin)
+                pseudoBox.Text = ((App)App.Current).settings.login;
             if(pseudoBox.Text != null && pseudoBox.Text != "")
             {
                 saveLoginCheckbox.IsChecked = true;
@@ -69,6 +70,7 @@ namespace DawnLauncher
         {
             initLogin();
         }
+
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -79,7 +81,7 @@ namespace DawnLauncher
         private void initLogin()
         {
             // Create a request using a URL that can receive a post.
-            WebRequest request = WebRequest.Create("http://localhost:1234");
+            WebRequest request = WebRequest.Create("http://localhost:6996/login");
             // Set the Method property of the request to POST.
             request.Method = "POST";
 
@@ -121,13 +123,15 @@ namespace DawnLauncher
                     Console.WriteLine(res.ok);
                     if ((bool)res.ok)
                     {
+                        ((App)App.Current).settings.key = res.key;
+                        ((App)App.Current).settings.login = pseudoBox.Text;
                         if ((bool)saveLoginCheckbox.IsChecked)
                         {
-                            ((App)App.Current).settings.savedLogin = pseudoBox.Text;
+                            ((App)App.Current).settings.savedLogin = true;
                         }
                         else
                         {
-                            ((App)App.Current).settings.savedLogin = null;
+                            ((App)App.Current).settings.savedLogin = false;
                         }
                         MainWindow main = new MainWindow((string)res.gameVersion);
                         main.Show();
@@ -181,7 +185,7 @@ namespace DawnLauncher
 
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
-            Process.Start("https://twitch.tv");
+            MessageBox.Show("mp matheo gros con");
         }
 
         private void Hyperlink_RequestNavigate_1(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)

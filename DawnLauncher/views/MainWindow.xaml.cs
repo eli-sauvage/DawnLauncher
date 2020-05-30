@@ -24,6 +24,7 @@ namespace DawnLauncher
             Console.WriteLine("debut");
             dynamic test = JsonConvert.DeserializeObject("{'test':null,'nombre':64}");
             currentGameVersion = gameVersion;
+            //((App)App.Current).settings.gameDir = "E:\\Game\\WindowsNoEditor";
             if(gameVersion != ((App)App.Current).settings.gameVersion)
             {
                 dlBtn.Content = "Download update";
@@ -42,10 +43,21 @@ namespace DawnLauncher
             Console.WriteLine("dl");
             if((string)dlBtn.Content == "Play")
             {
-                this.Visibility = Visibility.Hidden;
                 Console.WriteLine("PLAY");
-                Process.Start(((App)App.Current).settings.gameDir + "\\" + ((App)App.Current).gameName);
-                Application.Current.Shutdown();
+                string file = ((App)App.Current).settings.gameDir + "\\" + ((App)App.Current).gameName;
+                if (!File.Exists(file))
+                {
+                    MessageBox.Show("jeu non trouvé/le jeu doit s'appeller" + ((App)App.Current).gameName);
+                    ((App)App.Current).settings.gameDir = null;
+                    dlBtn.Content = "Download update";
+                }
+                else
+                {
+                    this.Visibility = Visibility.Hidden;
+                    Process.Start(file);
+                    Application.Current.Shutdown();
+                }
+
             }
             else
             {
@@ -88,6 +100,12 @@ namespace DawnLauncher
         {
             ((App)App.Current).settings.gameVersion = null;
             dlBtn.Content = "Download update";
+        }
+
+        private void setPathEvent(object sender, RoutedEventArgs e)
+        {
+            setNewPath setnewpath = new setNewPath();
+            _ = setnewpath.newPath() ? dlBtn.Content = "Play" : null;
         }
     }
 }
