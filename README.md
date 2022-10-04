@@ -1,4 +1,4 @@
-# DawnLauncher
+# DawnLauncher : début 2020
  
 Ceci est un petit lanceur de jeux vidéos en C# (WPF form)
 principe : petit utilitaire permettant de garder à jour, et télécharger si besoin les mises à jour des jeux
